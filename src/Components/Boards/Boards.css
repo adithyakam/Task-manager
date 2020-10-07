@@ -1,0 +1,12 @@
+.boards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ip_board {
+  text-align: center;
+  width: 240px;
+  height: 240px;
+  margin: 10px;
+  background-color: gray;
+}
