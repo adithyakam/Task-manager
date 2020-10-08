@@ -5,20 +5,20 @@ import Header from "./Components/Header/Header.component";
 import "./App.css";
 
 function App() {
-  const [boards, setBoards] = useState({ a: {}, b: {} });
+  let [boards, setBoards] = useState({});
+  let [len, setLen] = useState(0);
 
-  const addBoard = ({ name, event }) => {
-    event.preventDefault();
-
+  const addBoard = (name) => {
     console.log(name, "asf");
 
-    setBoards(name);
+    setBoards((prev) => ({ ...prev, [name]: {} }));
+    setLen(len++);
   };
 
   return (
     <div className="App">
       <Header />
-      <Boards boards={boards} addBoard={addBoard} />
+      <Boards boards={boards} addBoard={addBoard} len={len} />
     </div>
   );
 }
