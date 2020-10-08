@@ -2,6 +2,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+.boards_inner {
+  display: flex;
+  width: 100vw;
+  flex-wrap: wrap;
+}
 
 .ip_board {
   text-align: center;

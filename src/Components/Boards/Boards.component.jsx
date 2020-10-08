@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Boards.css";
 
-function Boards({ boards, addBoard, len }) {
+function Boards({ boards, addBoard, len, boardSelected }) {
   let [name, setName] = useState("");
   let boardsList = Object.keys(boards);
 
@@ -25,29 +25,47 @@ function Boards({ boards, addBoard, len }) {
 
       <div className="boards">
         {boardsList.length > 0 ? (
-          <div className="boards">
+          <div className="boards_inner">
             {boardsList.map((ele) => {
               return (
                 <div className="ip_board">
                   <h1>{ele}</h1>
-                  <button>open</button>
+                  <button
+                    onClick={(e) => {
+                      boardSelected(ele);
+                    }}
+                  >
+                    open
+                  </button>
                 </div>
               );
             })}
+            {name.length > 0 ? (
+              <div>
+                <div className="ip_board">
+                  <label>add board</label>
+                  <h1>{name}</h1>
+                  <button disabled>open</button>
+                </div>
+              </div>
+            ) : (
+              <h1></h1>
+            )}
           </div>
         ) : (
-          <h1>No boards to display </h1>
-        )}
-        {name.length > 0 ? (
           <div>
-            <div className="ip_board">
-              <label>add board</label>
-              <h1>{name}</h1>
-              <button disabled>open</button>
-            </div>
+            {name.length > 0 ? (
+              <div>
+                <div className="ip_board">
+                  <label>add board</label>
+                  <h1>{name}</h1>
+                  <button disabled>open</button>
+                </div>
+              </div>
+            ) : (
+              <h1>No boards to display </h1>
+            )}
           </div>
-        ) : (
-          <h1>asd</h1>
         )}
       </div>
     </div>
