@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-function CurrentTask() {
+function CurrentTask(props) {
+  const { updateBoard, selectedBoard } = props;
+
   const [list, setlist] = useState([]);
-  const [listEle, setListEle] = useState();
+  const [listEle, setListEle] = useState("");
 
   useEffect(() => {
     console.log(list);
+    console.log(selectedBoard, "curren-sel");
   }, [list]);
 
   const setInput = (e) => {
@@ -16,6 +19,7 @@ function CurrentTask() {
   const listadd = (e) => {
     e.preventDefault();
     setlist((prev) => [...prev, listEle]);
+    updateBoard(list, "current");
     // setMovies(prevMovies => ([...prevMovies, ...result]));
     // console.log(list);
     setListEle("");

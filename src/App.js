@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Boards from "./Components/Boards/Boards.component";
 import Header from "./Components/Header/Header.component";
 import Board from "./Components/Board/Board.component";
@@ -11,16 +11,32 @@ function App() {
   let [selectedBoard, setSelectedBoard] = useState({});
   let [selected, setSelected] = useState(false);
 
+  useEffect(() => {
+    console.log(boards);
+  }, [boards]);
+
   const addBoard = (name) => {
     console.log(name, "asf");
 
-    setBoards((prev) => ({ ...prev, [name]: {} }));
+    setBoards((prev) => ({
+      ...prev,
+      [name]: { current: ["ab"], progress: ["b"], completed: ["c"] },
+    }));
     setLen(len++);
+    // console.log(boards, "booooo");
+  };
+
+  const updateBoard = (ele, lvl) => {
+    console.log(selectedBoard, ele, lvl, "listttt");
+    const update = selectedBoard[lvl];
+    console.log(selectedBoard[lvl], "uppp");
+
+    setSelectedBoard((prev) => ({ ...prev }));
   };
 
   const boardSelected = (ele) => {
-    console.log(ele);
-    setSelectedBoard(ele);
+    console.log(ele, "selectedBord");
+    setSelectedBoard(boards[ele]);
     setSelected(true);
   };
 
@@ -30,7 +46,7 @@ function App() {
 
       {selected ? (
         <>
-          <Board selectedBoard={selectedBoard} />
+          <Board selectedBoard={selectedBoard} updateBoard={updateBoard} />
         </>
       ) : (
         <>
