@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function CurrentTask() {
   const [list, setlist] = useState([]);
   const [listEle, setListEle] = useState();
 
+  useEffect(() => {
+    console.log(list);
+  }, [list]);
+
   const setInput = (e) => {
     let ele = e.target.value;
-    console.log(ele);
     setListEle(ele);
   };
 
   const listadd = (e) => {
     e.preventDefault();
-    setlist((list) => [...list, listEle]);
+    setlist((prev) => [...prev, listEle]);
+    // setMovies(prevMovies => ([...prevMovies, ...result]));
+    // console.log(list);
     setListEle("");
   };
 
@@ -32,12 +37,17 @@ function CurrentTask() {
           }}
         />
       </form>
-      <div>
-        <ul>
-          <li>a</li>
-          <li>11</li>
-        </ul>
-      </div>
+      {list.length >= 1 ? (
+        <div>
+          <ul>
+            {list.map((ele) => {
+              return <li>{ele}</li>;
+            })}
+          </ul>
+        </div>
+      ) : (
+        <h1>no tasks</h1>
+      )}
     </div>
   );
 }
