@@ -6,13 +6,13 @@ import CompletedTask from "../CompletedTask/Completed.component";
 import "./Board.css";
 
 function Board(props) {
-  const { updateBoard, selectedBoard } = props;
+  const { updateBoard, boards,selectedBoardName } = props;
 
   return (
     <div className="board">
-      <CurrentTask selectedBoard={selectedBoard} updateBoard={updateBoard} />
-      <ProgressTask selectedBoard={selectedBoard} updateBoard={updateBoard} />
-      <CompletedTask selectedBoard={selectedBoard} updateBoard={updateBoard} />
+      <CurrentTask boards={boards} updateBoard={updateBoard} selectedBoardName={selectedBoardName} />
+      <ProgressTask boards={boards} updateBoard={updateBoard} selectedBoardName={selectedBoardName}/>
+      <CompletedTask boards={boards} updateBoard={updateBoard} selectedBoardName={selectedBoardName}/>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function CurrentTask(props) {
-  const { updateBoard, selectedBoard } = props;
+  const { updateBoard, boards ,selectedBoardName} = props;
 
   const [list, setlist] = useState([]);
   const [listEle, setListEle] = useState("");
@@ -36,10 +36,10 @@ function CurrentTask(props) {
           }}
         />
       </form>
-      {selectedBoard.current.length >= 1 ? (
+      {boards[selectedBoardName].current.length >= 1 ? (
         <div>
           <ul>
-            {selectedBoard.current.map((ele) => {
+            {boards[selectedBoardName].current.map((ele) => {
               return <li>{ele}</li>;
             })}
           </ul>

@@ -8,7 +8,7 @@ import "./App.css";
 function App() {
   let [boards, setBoards] = useState({});
   let [len, setLen] = useState(0);
-  let [selectedBoard, setSelectedBoard] = useState({});
+  // let [selectedBoard, setSelectedBoard] = useState({});
   let [selected, setSelected] = useState(false);
   let [selectedBoardName,setSelectedBoardName] = useState("")
 
@@ -18,7 +18,7 @@ function App() {
     //   if(key===selectedBoardName){
     //   setSelectedBoard(value);
     // }}
-  }, [boards,selectedBoard,selected,setSelectedBoardName]);
+  }, [boards,selected,setSelectedBoardName]);
 
   const addBoard = (name) => {
     console.log(name, "asf");
@@ -31,9 +31,9 @@ function App() {
   };
 
   const updateBoard = (ele, lvl) => {
-    const update = selectedBoard[lvl];
+    // const update = selectedBoard[lvl];
     for (const [key, value] of Object.entries(boards)) {  
-      console.log(selectedBoardName,"selected")
+      // console.log(selectedBoardName,"selected")
       if(key===selectedBoardName){
           setBoards(prev=>({
             ...prev,
@@ -51,7 +51,7 @@ function App() {
     // setSelectedBoard(boards[ele]);
     for (const [key, value] of Object.entries(boards)) {  
       if(key===ele){
-      setSelectedBoard(value);
+      // setSelectedBoard(value);
         setSelectedBoardName(ele)
     }
   }
@@ -64,7 +64,7 @@ function App() {
 
       {selected ? (
         <>
-          <Board selectedBoard={selectedBoard} updateBoard={updateBoard} />
+          <Board boards={boards} updateBoard={updateBoard} selectedBoardName={selectedBoardName}/>
         </>
       ) : (
         <>
