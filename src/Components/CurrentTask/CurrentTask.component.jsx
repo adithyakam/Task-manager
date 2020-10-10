@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function CurrentTask(props) {
-  const { updateBoard, boards ,selectedBoardName} = props;
+  const { updateBoard, boards ,selectedBoardName,removeTask} = props;
 
   const [list, setlist] = useState([]);
   const [listEle, setListEle] = useState("");
@@ -39,8 +39,16 @@ function CurrentTask(props) {
       {boards[selectedBoardName].current.length >= 1 ? (
         <div>
           <ul>
-            {boards[selectedBoardName].current.map((ele) => {
-              return <li>{ele}</li>;
+            {boards[selectedBoardName].current.map((ele,i) => {
+              return (
+                <div >
+                <li  >{ele}
+                <img src="" alt="del" onClick={(e)=>{
+                  removeTask(e,i,"current")
+                }}/>
+                </li>
+                </div>
+              )
             })}
           </ul>
         </div>

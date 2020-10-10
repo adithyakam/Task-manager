@@ -27,7 +27,7 @@ function App() {
       ...prev,
       [name]: { current: ["ab"], progress: ["b"], completed: ["c"] },
     }));
-    setLen(len++);
+    setLen(prev=>prev+1);
   };
 
   const updateBoard = (ele, lvl) => {
@@ -41,11 +41,22 @@ function App() {
           }))
     }
   }
-    // setSelectedBoard((prev)=>({...prev, 
-    // [lvl]:[...update,ele]
-    // }))
+   
 
   };
+
+  const removeTask=(ele,index,lvl)=>{
+    for (const [key, value] of Object.entries(boards)) {  
+      console.log(value[lvl],len,"value")
+      if(key===selectedBoardName){
+          setBoards(prev=>({
+            ...prev,
+            [selectedBoardName]:{...value,[lvl]:value[lvl].slice(index,value[lvl].length)}
+          }))
+    }
+  }
+      
+  }
 
   const boardSelected = (ele) => {
     // setSelectedBoard(boards[ele]);
@@ -53,6 +64,7 @@ function App() {
       if(key===ele){
       // setSelectedBoard(value);
         setSelectedBoardName(ele)
+
     }
   }
     setSelected(true);
@@ -64,7 +76,7 @@ function App() {
 
       {selected ? (
         <>
-          <Board boards={boards} updateBoard={updateBoard} selectedBoardName={selectedBoardName}/>
+          <Board boards={boards} updateBoard={updateBoard} selectedBoardName={selectedBoardName} removeTask={removeTask}/>
         </>
       ) : (
         <>
