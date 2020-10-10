@@ -6,11 +6,7 @@ function CurrentTask(props) {
   const [list, setlist] = useState([]);
   const [listEle, setListEle] = useState("");
 
-  useEffect(() => {
-    console.log(list);
-    console.log(selectedBoard, "curren-sel");
-  }, [list]);
-
+ 
   const setInput = (e) => {
     let ele = e.target.value;
     setListEle(ele);
@@ -18,8 +14,7 @@ function CurrentTask(props) {
 
   const listadd = (e) => {
     e.preventDefault();
-    setlist((prev) => [...prev, listEle]);
-    updateBoard(list, "current");
+    updateBoard(listEle, "current");
     // setMovies(prevMovies => ([...prevMovies, ...result]));
     // console.log(list);
     setListEle("");
@@ -41,10 +36,10 @@ function CurrentTask(props) {
           }}
         />
       </form>
-      {list.length >= 1 ? (
+      {selectedBoard.current.length >= 1 ? (
         <div>
           <ul>
-            {list.map((ele) => {
+            {selectedBoard.current.map((ele) => {
               return <li>{ele}</li>;
             })}
           </ul>

@@ -12,8 +12,8 @@ function App() {
   let [selected, setSelected] = useState(false);
 
   useEffect(() => {
-    console.log(boards);
-  }, [boards]);
+    console.log(boards,selectedBoard,"asfdasdfwesa");
+  }, [boards,selectedBoard,selected]);
 
   const addBoard = (name) => {
     console.log(name, "asf");
@@ -23,19 +23,18 @@ function App() {
       [name]: { current: ["ab"], progress: ["b"], completed: ["c"] },
     }));
     setLen(len++);
-    // console.log(boards, "booooo");
   };
 
   const updateBoard = (ele, lvl) => {
-    console.log(selectedBoard, ele, lvl, "listttt");
-    const update = selectedBoard[lvl];
-    console.log(selectedBoard[lvl], "uppp");
+    const update = selectedBoard[lvl]
 
-    setSelectedBoard((prev) => ({ ...prev }));
+    setSelectedBoard((prev)=>({...prev, 
+    [lvl]:[...update,ele]
+    }))
+
   };
 
   const boardSelected = (ele) => {
-    console.log(ele, "selectedBord");
     setSelectedBoard(boards[ele]);
     setSelected(true);
   };
