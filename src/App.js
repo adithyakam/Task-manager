@@ -10,10 +10,15 @@ function App() {
   let [len, setLen] = useState(0);
   let [selectedBoard, setSelectedBoard] = useState({});
   let [selected, setSelected] = useState(false);
+  let [selectedBoardName,setSelectedBoardName] = useState("")
 
   useEffect(() => {
-    console.log(boards,selectedBoard,"asfdasdfwesa");
-  }, [boards,selectedBoard,selected]);
+    console.log(boards,"asfdasdfwesa");
+    // for (const [key, value] of Object.entries(boards)) {  
+    //   if(key===selectedBoardName){
+    //   setSelectedBoard(value);
+    // }}
+  }, [boards,selectedBoard,selected,setSelectedBoardName]);
 
   const addBoard = (name) => {
     console.log(name, "asf");
@@ -26,16 +31,30 @@ function App() {
   };
 
   const updateBoard = (ele, lvl) => {
-    const update = selectedBoard[lvl]
-
-    setSelectedBoard((prev)=>({...prev, 
-    [lvl]:[...update,ele]
-    }))
+    const update = selectedBoard[lvl];
+    for (const [key, value] of Object.entries(boards)) {  
+      console.log(selectedBoardName,"selected")
+      if(key===selectedBoardName){
+          setBoards(prev=>({
+            ...prev,
+            [selectedBoardName]:{...value,[lvl]:[...value[lvl],ele]}
+          }))
+    }
+  }
+    // setSelectedBoard((prev)=>({...prev, 
+    // [lvl]:[...update,ele]
+    // }))
 
   };
 
   const boardSelected = (ele) => {
-    setSelectedBoard(boards[ele]);
+    // setSelectedBoard(boards[ele]);
+    for (const [key, value] of Object.entries(boards)) {  
+      if(key===ele){
+      setSelectedBoard(value);
+        setSelectedBoardName(ele)
+    }
+  }
     setSelected(true);
   };
 
