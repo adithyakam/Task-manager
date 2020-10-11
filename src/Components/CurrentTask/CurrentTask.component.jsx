@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function CurrentTask(props) {
-  const { updateBoard, boards ,selectedBoardName,removeTask} = props;
+  const { updateBoard, boards ,selectedBoardName,removeTask,onDraagStart,onDraagOver,oonDrop} = props;
 
   const [list, setlist] = useState([]);
   const [listEle, setListEle] = useState("");
@@ -38,19 +38,20 @@ function CurrentTask(props) {
       </form>
       {boards[selectedBoardName].current.length >= 1 ? (
         <div>
-          <ul>
+          <div onDrop={e=>{oonDrop(e,"complete")}}  onDragOver={(e)=>props.onDraagOver(e)} style={{display:"flex",flexDirection:"column"}}>
             {boards[selectedBoardName].current.map((ele,i) => {
               return (
-                <div >
-                <li  >{ele}
-                <img src="" alt="del" onClick={(e)=>{
-                  removeTask(e,i,"current")
-                }}/>
-                </li>
+                <div  draggable>
+                  <div  onDragStart={event=>{onDraagStart(event,ele)}} >
+                  {ele}
+                  <img src="" alt="del" onClick={(e)=>{
+                    removeTask(e,i,"current")
+                  }}/>
+                  </div>
                 </div>
               )
             })}
-          </ul>
+          </div>
         </div>
       ) : (
         <h1>no tasks</h1>

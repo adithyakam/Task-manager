@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function ProgressTask(props) {
-  const { updateBoard, boards ,selectedBoardName} = props;
+  const { updateBoard, boards ,selectedBoardName,removeTask,onDraagStart,onDraagOver,oonDrop} = props;
 
   const [list, setlist] = useState([]);
   const [listEle, setListEle] = useState("");
@@ -20,6 +20,8 @@ function ProgressTask(props) {
     setListEle("");
   };
 
+
+
   return (
     <div className="current">
       <h1>CurrentTask</h1>
@@ -36,13 +38,24 @@ function ProgressTask(props) {
           }}
         />
       </form>
-      {boards[selectedBoardName]?.progress.length >= 1 ? (
+      {boards[selectedBoardName].progress.length >= 1 ? (
         <div>
-          <ul>
-            {boards[selectedBoardName]?.progress.map((ele) => {
-              return <li>{ele}</li>;
+          <div                    onDragOver={(e)=>props.onDraagOver(e)}
+  style={{display:"flex",flexDirection:"column"}}>
+            {boards[selectedBoardName].progress.map((ele,i) => {
+              return (
+                <div  onDragStart={event=>{props.onDraagStart(event,ele)}} draggable>
+                  <div                     
+                  >
+                  {ele}
+                  <img src="" alt="del" onClick={(e)=>{
+                    removeTask(e,i,"progress")
+                  }}/>
+                  </div>
+                </div>
+              )
             })}
-          </ul>
+          </div>
         </div>
       ) : (
         <h1>no tasks</h1>

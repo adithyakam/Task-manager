@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function CompletedTask(props) {
-  const { updateBoard, boards ,selectedBoardName} = props;
+  const { updateBoard, boards ,selectedBoardName,onDraagStart,onDraagOver,oonDrop} = props;
 
   const [list, setlist] = useState([]);
   const [listEle, setListEle] = useState("");

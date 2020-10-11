@@ -10,7 +10,9 @@ function App() {
   let [len, setLen] = useState(0);
   // let [selectedBoard, setSelectedBoard] = useState({});
   let [selected, setSelected] = useState(false);
-  let [selectedBoardName,setSelectedBoardName] = useState("")
+  let [selectedBoardName,setSelectedBoardName] = useState("");
+  let [dragableItem,setDragableItem] = useState({})
+
 
   useEffect(() => {
     console.log(boards,"asfdasdfwesa");
@@ -46,6 +48,27 @@ console.log(len,"ength");
 
   };
 
+  const   onDraagOver=(e)=>{
+    e.preventDefault();
+      }
+
+      const onDraagStart =(e,ele)=>{
+        console.log("dragStart",ele);
+        e.dataTransfer.setData("id", ele)
+
+      }
+
+      const oonDrop = (ev, start,finish) => {         
+        let id = ev.dataTransfer.getData("id"); 
+        console.log(id,start,finish);
+        //  let tasks = this.state.tasks.filter((task) => {      
+        //    if (task.name == id) {             
+        //        task.category = cat;                
+        //        }                     return task;       
+        //          });        
+        //             this.setState({                 ...this.state,                 tasks          });  
+        }
+
   const removeTask=(event,index,lvl)=>{
     for (const [key, value] of Object.entries(boards)) { 
 
@@ -79,7 +102,7 @@ console.log(len,"ength");
 
       {selected ? (
         <>
-          <Board boards={boards} updateBoard={updateBoard} selectedBoardName={selectedBoardName} removeTask={removeTask}/>
+          <Board boards={boards} updateBoard={updateBoard} oonDrop={oonDrop} selectedBoardName={selectedBoardName} onDraagStart={onDraagStart} removeTask={removeTask} onDraagOver={onDraagOver} />
         </>
       ) : (
         <>
