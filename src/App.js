@@ -18,7 +18,8 @@ function App() {
     //   if(key===selectedBoardName){
     //   setSelectedBoard(value);
     // }}
-  }, [boards,selected,setSelectedBoardName]);
+console.log(len,"ength");
+  }, [boards,selected,setSelectedBoardName,len]);
 
   const addBoard = (name) => {
     console.log(name, "asf");
@@ -45,13 +46,15 @@ function App() {
 
   };
 
-  const removeTask=(ele,index,lvl)=>{
-    for (const [key, value] of Object.entries(boards)) {  
-      console.log(value[lvl],len,"value")
+  const removeTask=(event,index,lvl)=>{
+    for (const [key, value] of Object.entries(boards)) { 
+
       if(key===selectedBoardName){
+        const ele=value[lvl][index];
+        // console.log(value[lvl].splice(index,1),index,"valllue");
           setBoards(prev=>({
             ...prev,
-            [selectedBoardName]:{...value,[lvl]:value[lvl].slice(index,value[lvl].length)}
+            [selectedBoardName]:{...value,[lvl]:[...value[lvl].filter((item,i)=>i!=index)]}
           }))
     }
   }
