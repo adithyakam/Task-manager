@@ -50,6 +50,8 @@ console.log(len,"ength");
 
   const   onDraagOver=(e)=>{
     e.preventDefault();
+console.log("draag",e);
+
       }
 
       const onDraagStart =(e,ele)=>{
@@ -60,7 +62,7 @@ console.log(len,"ength");
 
       const oonDrop = (ev, start,finish) => {         
         let id = ev.dataTransfer.getData("id"); 
-        console.log(id,start,finish);
+        console.log(id,start,"finish");
         //  let tasks = this.state.tasks.filter((task) => {      
         //    if (task.name == id) {             
         //        task.category = cat;                

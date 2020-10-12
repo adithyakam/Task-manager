@@ -40,7 +40,7 @@ function ProgressTask(props) {
       </form>
       {boards[selectedBoardName].progress.length >= 1 ? (
         <div>
-          <div                    onDragOver={(e)=>props.onDraagOver(e)}
+          <div                   onDrop={e=>{props.oonDrop(e,"complete")}}  onDragOver={(e)=>props.onDraagOver(e)} 
   style={{display:"flex",flexDirection:"column"}}>
             {boards[selectedBoardName].progress.map((ele,i) => {
               return (

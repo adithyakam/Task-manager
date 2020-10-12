@@ -42,7 +42,7 @@ function CurrentTask(props) {
             {boards[selectedBoardName].current.map((ele,i) => {
               return (
                 <div  draggable>
-                  <div  onDragStart={event=>{onDraagStart(event,ele)}} >
+                  <div  onDragStart={event=>{props.onDraagStart(event,ele)}} >
                   {ele}
                   <img src="" alt="del" onClick={(e)=>{
                     removeTask(e,i,"current")
