@@ -1,58 +1,25 @@
-const data={
-    a:[{
-        id:1,
-        item:"dkdk",
-        lvl:"current"
-
-    },
+const data=[
     {
-        id:2,
-        item:"dkdk",
-        lvl:"current"
-
-    },
-    {
-        id:3,
-        item:"dkdk",
-        lvl:"current"
-
-    },
-     {
-        id:1,
-        item:"dkdk",
-        lvl:"inprogress"
-
-    },
-    {
-        id:2,
-        item:"dkdk",
-        lvl:"inprogress"
-
-    },
-    {
-        id:3,
-        item:"dkdk",
-        lvl:"inprogress"
-
+        title:"curent",
+        id:0,
+        notes:[
+            {
+                id:0,
+                text:"first"
+            },
+            {
+                id:1,
+                text:"first"
+            },
+            {
+                id:2,
+                text:"first"
+            }
+        ]
     },{
-        id:1,
-        item:"dkdk",
-        lvl:"completed"
-
-    },
-    {
-        id:2,
-        item:"dkdk",
-        lvl:"completed"
-
-    },
-    {
-        id:3,
-        item:"dkdk",
-        lvl:"completed"
-
-    },]
-}
+        title:"Ss"
+    }
+]
     
 
 
