@@ -17,7 +17,15 @@ const data=[
             }
         ]
     },{
-        title:"Ss"
+        title:"Ss",
+        id:1,
+        notes:[{
+            id:0,
+            text:"Aaa"
+        },{
+            id:1,
+            text:"asdw"
+        }]
     }
 ]
     
