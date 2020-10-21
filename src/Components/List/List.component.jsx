@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import Button from "../Button/Button.component";
 
 function List({str,addNote}) {
 
@@ -27,22 +28,28 @@ function List({str,addNote}) {
         <div className="notes">
        { toggle===true?(
            <div style={{backgroundColor:"yellow"}}>
-           <button onClick={e=>{toggleButton("in  true")}} >add</button>
-                <form onSubmit={submitNote}>
+            <Button toggleButton={toggleButton}/>
+                    <form onSubmit={submitNote}>
             <label>input</label>
                 <input value={inp} onChange={listValue}/>
                 </form>
              </div>
         ):(
-            <button onClick={e=>{toggleButton("in faalse")}} >add</button>
-
+            <Button toggleButton={toggleButton}/>
+      
         )}
-        
-            <h1>{title}</h1>
-           {notes?.map(ele=>{
+        <h1>{title}</h1>
+
+        {(notes.length>0)?(
+        <>
+            {notes.map(ele=>{
             return <h1 key={ele.id}>{ele.text }</h1>
-           })}
-           
+            })}
+        </>
+        ):(     
+              <> 
+            <h1>nonnn</h1> 
+            </>)}
      
         </div>
     )
