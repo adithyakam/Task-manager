@@ -1,10 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
 function List({str,addNote}) {
 
     const {title,notes,id}=str;
     const [inp, setinp] = useState("");
     const [toggle,setToggle] = useState(false)
+
 
     const listValue=(event)=>{
 
@@ -18,32 +19,28 @@ function List({str,addNote}) {
     }
 
     const toggleButton=(dd)=>{
-        console.log("sd",dd);
-        setToggle(prev =>{
-            prev=!prev
-        })
+       setToggle(!toggle)
     }
 
     return (
         
         <div className="notes">
-       { toggle?(
-           <div>
-           <button onclick={toggleButton('dd')}>dun</button>
-
-            <form onSubmit={submitNote}>
-           <label>input</label>
-            <input value={inp} onChange={listValue}/>
-             </form>
+       { toggle===true?(
+           <div style={{backgroundColor:"yellow"}}>
+           <button onClick={e=>{toggleButton("in  true")}} >add</button>
+                <form onSubmit={submitNote}>
+            <label>input</label>
+                <input value={inp} onChange={listValue}/>
+                </form>
              </div>
         ):(
-            <h1 onclick={toggleButton}>add</h1>
+            <button onClick={e=>{toggleButton("in faalse")}} >add</button>
 
         )}
         
             <h1>{title}</h1>
            {notes?.map(ele=>{
-            return <h1>{ele.text}</h1>
+            return <h1 key={ele.id}>{ele.text }</h1>
            })}
            
      
