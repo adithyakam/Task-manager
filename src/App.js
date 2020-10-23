@@ -20,7 +20,9 @@ function App() {
   const addNote=(text,title)=>{
 console.log(title,"sdsd");
 
-    data.map(ele=>{
+const dummy=list;
+
+    dummy.map(ele=>{
       if(ele.title===title){
         ele.notes.push(
           {
@@ -31,6 +33,10 @@ console.log(title,"sdsd");
       }
     }
     )
+    
+    setList(dummy);
+
+
 
   }
   const addList=(event)=>{
