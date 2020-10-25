@@ -1,5 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import Button from "../Button/Button.component";
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
+
 
 function List({str,addNote}) {
 
@@ -39,18 +42,43 @@ function List({str,addNote}) {
       
         )}
         <h1>{title}</h1>
+        <DragDropContext>
+        <Droppable droppableId={String(id)}>
+        {(provided)=>(
+            <div>
+            {(notes.length>0)?(
+        <div {...provided.droppableProps} ref={provided.innerRef}>
+            {notes.map((ele,i)=>{
 
-        {(notes.length>0)?(
-        <>
-            {notes.map(ele=>{
-            return <h1 key={ele.id}>{ele.text }</h1>
+            return (
+                <Draggable draggableId={String(i)} index={id}>
+                
+                 {   (provided)=>(
+                        <h1 key={ele.i} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                        {ele.text }
+                        </h1>
+)}
+                    
+                
+                </Draggable>
+)
             })}
-        </>
+        </div>
         ):(     
               <> 
             <h1>nonnn</h1> 
             </>)}
+                    {provided.placeholder}
+
+            </div>
+        )
+
+        }
+        </Droppable>
+        
      
+        </DragDropContext>
+        
         </div>
     )
 }
