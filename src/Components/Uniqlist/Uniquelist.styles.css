@@ -1,0 +1,7 @@
+.drpable {
+  width: 100%;
+  height: 550px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+}
