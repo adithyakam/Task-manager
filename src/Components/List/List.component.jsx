@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import Button from "../Button/Button.component";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
+import './list.styles.css'
 
 
 function List({str,addNote}) {
@@ -26,9 +26,15 @@ function List({str,addNote}) {
        setToggle(!toggle)
     }
 
+    const onDragEnd=(event)=>{
+        console.log(event);
+    }
+
     return (
         
-        <div className="notes">
+        <div className="notes" style={{width:"20%"}}>
+        <DragDropContext  className=" drag" onDragEnd={onDragEnd}>
+
        { toggle===true?(
            <div style={{backgroundColor:"yellow"}}>
             <Button toggleButton={toggleButton}/>
@@ -41,36 +47,39 @@ function List({str,addNote}) {
             <Button toggleButton={toggleButton}/>
       
         )}
-        <h1>{title}</h1>
-        <DragDropContext>
-        <Droppable droppableId={String(id)}>
-        {(provided)=>(
-            <div>
-            {(notes.length>0)?(
-        <div {...provided.droppableProps} ref={provided.innerRef}>
-            {notes.map((ele,i)=>{
 
+        <h1>{title}</h1>
+        <Droppable droppableId={(str.title)}>
+        {(provided)=>(
+            <ul  
+           {...provided.droppableProps} ref={provided.innerRef}
+            style={{width:"100%",backgroundColor:"yellowgreen"}}>
+            
+            {(notes.length>0)?(
+            notes.map((ele,i)=>{
             return (
-                <Draggable draggableId={String(i)} index={id}>
+                <Draggable draggableId={String(ele.id)}  key={ele.id} index={(i)}>
                 
                  {   (provided)=>(
-                        <h1 key={ele.i} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                        {ele.text }
-                        </h1>
+                        <li 
+                        key={i}
+                        style={{backgroundColor:"red",width:"50%",padding:"10px"}}
+                        {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef} >
+                        {ele.text } 
+                        </li>
 )}
-                    
-                
-                </Draggable>
-)
-            })}
-        </div>
+                </Draggable>)
+            })
+      
         ):(     
               <> 
             <h1>nonnn</h1> 
             </>)}
                     {provided.placeholder}
 
-            </div>
+            </ul>
         )
 
         }

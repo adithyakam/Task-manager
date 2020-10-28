@@ -1,4 +1,8 @@
 .notes {
-  display: flex;
-  flex-direction: column;
+  background-color: yellow;
+  margin: 1rem;
+}
+
+.drag {
+  background-color: yellowgreen;
 }

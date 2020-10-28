@@ -1,7 +1,7 @@
 const data=[
     {
         title:"curent",
-        id:0,
+        id:1,
         notes:[
             {
                 id:0,
@@ -18,12 +18,12 @@ const data=[
         ]
     },{
         title:"Ss",
-        id:1,
+        id:2,
         notes:[{
-            id:0,
+            id:3,
             text:"Aaa"
         },{
-            id:1,
+            id:4,
             text:"asdw"
         }]
     }

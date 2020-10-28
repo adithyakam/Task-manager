@@ -62,8 +62,8 @@ const dummy=list;
     <div className="App">
     <Header/>
     <div className='lists'>
-       { list.map((str) => {
-           return <List str={str} addNote={addNote}/> 
+       { list.map((str,i) => {
+           return <List str={str} addNote={addNote} key={i}/> 
     })}
 
     <form  onSubmit={addNewList}>
