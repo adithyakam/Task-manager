@@ -6,19 +6,39 @@ import "./TaskBoard.styles.css"
 
 function TaskBoard({data,newNote}) {
 
+    const onDragEnd=(e)=>{
+        console.log(e);
+    }
+
     return (
 
+        <DragDropContext onDragEnd={onDragEnd}>
+        
+
         <div className="taskboard">
-            <h1>in taskboard</h1>
+                <Droppable droppableId="all-lists" direction="horizontal" type="list">
+                {provided => (
+                    <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+  <h1>in taskboard</h1>
             <div className="taskboard_container">
             {
-                data.map(ele=>(
-                <TaskList ele={ele} newNote={newNote}/>
+                data.map((ele,i)=>(
+                <TaskList ele={ele} listId={ele.id} key={ele.id} index={i} newNote={newNote}/>
 
             ))
             }
+            {provided.placeholder}
+
             </div>
+
+            </div>
+                )}
+                </Droppable>
         </div>
+        </DragDropContext>
     )
 }
 

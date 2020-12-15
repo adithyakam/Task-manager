@@ -1,7 +1,7 @@
 const data=[
     {
         title:"curent",
-        id:1,
+        id:"01",
         notes:[
             {
                 id:0,
@@ -11,14 +11,14 @@ const data=[
                 id:1,
                 text:"first"
             },
-            {
-                id:2,
-                text:"first"
-            }
+            // {
+            //     id:2,
+            //     text:"first"
+            // }
         ]
     },{
         title:"Ss",
-        id:2,
+        id:"02",
         notes:[{
             id:3,
             text:"Aaa"

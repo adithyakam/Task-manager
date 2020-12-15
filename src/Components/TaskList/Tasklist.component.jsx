@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
 import Card from "../Card/Card.component"
+import { DragDropContext, Droppable ,Draggable} from "react-beautiful-dnd";
+
 
 import "./Tasklist.style.css"
 
-function Tasklist({ele,newNote}) {
+function Tasklist({ele,newNote,listId,index}) {
      const [text, settext] = useState("")
 
 const textAdd=(e)=>{
@@ -17,21 +19,40 @@ const submitText=(e,title)=>{
     newNote(text,title)
 }
 
+
+
+
     return (
-        <div className='tasklist'>
-            <h1>title: {ele.title}</h1>
-            
-            <form onSubmit={e=>submitText(e,ele.title)}>
-                <input onChange={event=>textAdd(event)}/>
-            </form>
 
-            {
-                ele.notes.map(note=>(
-                    <Card note={note} />
-                ))
-            }
-
+      <Draggable draggableId={String(listId)} index={index}>
+      {provided => (
+        <div
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+        >
+<Droppable droppableId={String(listId)} type="card">
+            {provided => (
+              <div className='listContainer'>
+                <div  {...provided.droppableProps} ref={provided.innerRef}>
+                  {ele.notes.map((card, index) => (
+                    <Card
+                      key={card.id}
+                      note={card}
+                      id={card.id}
+                      index={index}
+                      listId={listId}
+                    />
+                  ))}
+                  {provided.placeholder}
+                </div>
+              </div>
+            )}
+          </Droppable>
         </div>
+      )}
+      </Draggable>
+
     )
 }
 
