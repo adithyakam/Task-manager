@@ -1,25 +1,18 @@
 import React,{useState} from 'react'
 import Card from "../Card/Card.component"
+import TaskCreate from '../TaskCreate/TaskCreate.component'
 import { DragDropContext, Droppable ,Draggable} from "react-beautiful-dnd";
 
 
 import "./Tasklist.style.css"
 
-function Tasklist({ele,newNote,listId,index}) {
+function Tasklist({ele,newNote,listId,index,submitText}) {
      const [text, settext] = useState("")
 
 const textAdd=(e)=>{
     // console.log(e.target.value);
     settext(e.target.value)
 }
-
-const submitText=(e,title)=>{
-    e.preventDefault();
-    console.log(text);
-    newNote(text,title)
-}
-
-
 
 
     return (
@@ -45,6 +38,7 @@ const submitText=(e,title)=>{
                     />
                   ))}
                   {provided.placeholder}
+                  <TaskCreate submitText={submitText} listId={listId}/>
                 </div>
               </div>
             )}
