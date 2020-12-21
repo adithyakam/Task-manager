@@ -4,7 +4,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 import "./TaskBoard.styles.css"
 
-function TaskBoard({data,newNote}) {
+function TaskBoard({data,newNote,submitText}) {
 
     
 
@@ -14,18 +14,7 @@ function TaskBoard({data,newNote}) {
     }
 
 
-    const submitText=(list,listId)=>{
-        // e.preventDefault();
-        console.log(list);
-        data.filter(ele=>(ele.id===listId )).map(ele=>(
-            ele.notes.push("adfasd")
-        ))
-         
-        
-
-
-    }
-
+   
     return (
 
         <DragDropContext onDragEnd={onDragEnd}>

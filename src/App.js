@@ -15,10 +15,36 @@ function App() {
 
   }
 
+  const submitText=(list,listId)=>{
+    // e.preventDefault();
+
+    // setListData(prev=>(
+    //   ...prev,
+      
+    // ))
+
+    let newObject=listData.filter(ele=>(ele.id===listId ))
+    let newNotes=newObject[0].notes;
+    newObject[0]={
+      ...newObject[0],
+      notes:[
+...newNotes,
+{
+  id:newNotes.length,
+  title:"hi in"
+}
+
+      ]
+    }
+    console.log("new",newObject)
+
+}
+
+
   return (
     <div className="App">
      <Header/> 
-      <TaskBoard data={listData} newNote={newNote}/>
+      <TaskBoard data={listData} newNote={newNote} submitText={submitText}/>
     </div>
   );
 }
