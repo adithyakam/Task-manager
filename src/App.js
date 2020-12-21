@@ -15,13 +15,12 @@ function App() {
 
   }
 
-  const submitText=(list,listId)=>{
-    // e.preventDefault();
 
-    // setListData(prev=>(
-    //   ...prev,
-      
-    // ))
+  useEffect(() => {
+   console.log(listData);
+  }, [listData])
+
+  const submitText=(list,listId)=>{
 
     let newObject=listData.filter(ele=>(ele.id===listId ))
     let newNotes=newObject[0].notes;
@@ -30,13 +29,27 @@ function App() {
       notes:[
 ...newNotes,
 {
-  id:newNotes.length,
-  title:"hi in"
+  id:`${listId}`+newNotes.length,
+  text:list
 }
 
       ]
     }
-    console.log("new",newObject)
+
+  const newList=listData.map(ele=>(
+    (ele.id===listId)?{
+     ...newObject[0]
+    }:{ ...ele}
+     
+    )
+  )
+
+const newL=Object.assign([],listData,newList)
+
+
+
+    setListData(newL)
+
 
 }
 
