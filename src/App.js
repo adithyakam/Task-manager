@@ -20,8 +20,19 @@ function App() {
    console.log(listData);
   }, [listData])
 
-  const submitText=(list,listId)=>{
+  const submitText=(list,listId ,name)=>{
+      console.log("insubmit",list,name,listId)
+      if(name === "list"){
+        let newdatalist=[...listData,{
+          title:list,
+          id:"0"+(listData.length+1),
+          notes:[]
+        }]
 
+        console.log("inlist",newdatalist);
+        setListData(newdatalist)
+      }else{
+        
     let newObject=listData.filter(ele=>(ele.id===listId ))
     let newNotes=newObject[0].notes;
     newObject[0]={
@@ -50,6 +61,8 @@ const newL=Object.assign([],listData,newList)
 
     setListData(newL)
 
+
+      }
 
 }
 

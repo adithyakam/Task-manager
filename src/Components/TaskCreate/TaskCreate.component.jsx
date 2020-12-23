@@ -1,12 +1,12 @@
 import React,{useState} from 'react'
 
-function TaskCreate({submitText,listId}) {
+function TaskCreate({submitText,listId,name}) {
 
 const [list,setList]=useState('')
 
     const onSubmitForm=e=>{
         e.preventDefault();
-        submitText(list,listId)
+        submitText(list,listId,name)
     }
     const addList= e=>{
         setList(e.target.value);

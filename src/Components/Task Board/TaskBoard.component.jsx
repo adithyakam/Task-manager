@@ -1,6 +1,7 @@
 import React from 'react'
 import TaskList from "../TaskList/Tasklist.component"
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import TaskCreate from '../TaskCreate/TaskCreate.component'
 
 import "./TaskBoard.styles.css"
 
@@ -36,7 +37,7 @@ function TaskBoard({data,newNote,submitText}) {
             ))
             }
             {provided.placeholder}
-
+            <TaskCreate submitText={submitText} name="list"/>
             </div>
 
             </div>
