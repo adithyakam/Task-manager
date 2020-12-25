@@ -1,20 +1,24 @@
-import React from 'react'
+import React,{useState} from 'react'
 import TaskList from "../TaskList/Tasklist.component"
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import TaskCreate from '../TaskCreate/TaskCreate.component'
 
 import "./TaskBoard.styles.css"
 
 function TaskBoard({data,newNote,submitText}) {
+const [isOpen, setisOpen] = useState(true)
 
-    
-
-
-    const onDragEnd=(e)=>{
-        console.log(e);
-    }
+const changeOpennewList=()=>{
+    setisOpen(prev=>(!prev))
+}
 
 
+
+const onDragEnd=(e)=>{
+    console.log(e)
+}
    
     return (
 
@@ -37,7 +41,18 @@ function TaskBoard({data,newNote,submitText}) {
             ))
             }
             {provided.placeholder}
-            <TaskCreate submitText={submitText} name="list"/>
+
+           { (isOpen)?(
+                <AddCircleIcon onClick={changeOpennewList}/>
+
+            ):(
+                <div>
+                    <RemoveCircleIcon onClick={changeOpennewList}/>
+                    <TaskCreate submitText={submitText} name="list"/>
+
+                </div>
+
+            )}
             </div>
 
             </div>
