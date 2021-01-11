@@ -29,9 +29,15 @@ const onDragEnd=(e)=>{
             let newData=data
             if(source.droppableId===destination.droppableId){
                 console.log("in cssrd");
-                const stateList=newData[source.droppableId]
-                console.log(stateList)
+                const stateList=newData.filter(ele=>ele.id===source.droppableId)
 
+                const stateList2=stateList[0].notes;
+                const stateListCopy=stateList;
+                
+        const pulledOutList = stateList2.splice( source.index, 1);
+        stateList2.splice(destination.index, 0, ...pulledOutList);
+
+                console.log("com",stateList,stateListCopy);
 
             }
         // newData.splice(destination.index, 0, ...pulledOutList);
