@@ -17,7 +17,26 @@ const changeOpennewList=()=>{
 
 
 const onDragEnd=(e)=>{
-    console.log(e)
+        const {destination,source,type}=e
+        if(type=="list"){
+            console.log("in lisst",e)
+            let newData=data
+        const pulledOutList = newData.splice( source.index, 1);
+        newData.splice(destination.index, 0, ...pulledOutList);
+
+        }else{
+            console.log("in card",e)
+            let newData=data
+            if(source.droppableId===destination.droppableId){
+                console.log("in cssrd");
+                const stateList=newData[source.droppableId]
+                console.log(stateList)
+
+
+            }
+        // newData.splice(destination.index, 0, ...pulledOutList);
+
+        }
 }
    
     return (
