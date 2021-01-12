@@ -27,6 +27,7 @@ const onDragEnd=(e)=>{
         }else{
             console.log("in card",e)
             let newData=data
+
             if(source.droppableId===destination.droppableId){
                 console.log("in cssrd");
                 const stateList=newData.filter(ele=>ele.id===source.droppableId)
@@ -39,7 +40,28 @@ const onDragEnd=(e)=>{
 
                 console.log("com",stateList,stateListCopy);
 
+            }else{
+
+                console.log("in diff card");
+
+                const sourceObj=newData.filter(ele=>ele.id===source.droppableId)
+                const destObj=newData.filter(ele=>ele.id===destination.droppableId)
+
+                const sourceList=sourceObj[0].notes;
+                const destList=destObj[0].notes;
+
+                
+                const pulledOutList = sourceList.splice( source.index, 1);
+                destList.splice(destination.index, 0, ...pulledOutList);
+
+
+
+
+
+
             }
+
+
         // newData.splice(destination.index, 0, ...pulledOutList);
 
         }
