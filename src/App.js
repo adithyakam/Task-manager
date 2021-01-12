@@ -21,7 +21,6 @@ function App() {
   }, [listData])
 
   const submitText=(list,listId ,name)=>{
-      console.log("insubmit",list,name,listId)
       if(name === "list"){
         let newdatalist=[...listData,{
           title:list,

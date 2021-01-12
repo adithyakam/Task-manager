@@ -1,0 +1,26 @@
+.taskcreate {
+  border-radius: 5px;
+  margin: 0 5px;
+  font-size: 0.9rem;
+  padding: 5px;
+  resize: none;
+  width: 90%;
+  overflow: hidden;
+  outline: none;
+  border: none;
+}
+
+#submitForm {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 3px;
+  margin: 0 5px;
+  letter-spacing: 1px;
+  border-radius: 5px;
+}
+
+.createTask {
+  background-color: rgb(194, 194, 192);
+  border-radius: 5px;
+  padding: 7px;
+}

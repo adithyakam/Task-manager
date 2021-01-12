@@ -18,6 +18,11 @@ const changeOpennewList=()=>{
 
 const onDragEnd=(e)=>{
         const {destination,source,type}=e
+        if (!destination) {
+            return;
+          } 
+
+
         if(type=="list"){
             console.log("in lisst",e)
             let newData=data
@@ -54,15 +59,7 @@ const onDragEnd=(e)=>{
                 const pulledOutList = sourceList.splice( source.index, 1);
                 destList.splice(destination.index, 0, ...pulledOutList);
 
-
-
-
-
-
             }
-
-
-        // newData.splice(destination.index, 0, ...pulledOutList);
 
         }
 }
@@ -95,7 +92,7 @@ const onDragEnd=(e)=>{
                 <div>
                     <RemoveCircleIcon onClick={changeOpennewList}/>
                     <TaskCreate submitText={submitText} name="list"/>
-
+                    
                 </div>
 
             )}
