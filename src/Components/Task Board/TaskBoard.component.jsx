@@ -79,7 +79,6 @@ const onDragEnd=(e)=>{
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-  <h1>in taskboard</h1>
             <div className="taskboard_container">
             {
                 data.map((ele,i)=>(

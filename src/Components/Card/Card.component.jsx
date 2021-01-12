@@ -5,7 +5,7 @@ import './Card.style.css'
 
 function Card({note,id,index,listId}) {
     return (
-        <div>
+        <div >
 
                 <Draggable draggableId={String(id)} index={index}>
         {provided => (
@@ -15,7 +15,7 @@ function Card({note,id,index,listId}) {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
-            <h1>{note.text}</h1>
+            <h1  className="card">{note.text}</h1>
           </div>
         )}
       </Draggable>

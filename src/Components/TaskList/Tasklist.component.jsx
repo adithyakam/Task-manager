@@ -27,7 +27,7 @@ const textAdd=(e)=>{
 <Droppable droppableId={String(listId)} type="card">
             {provided => (
               <div className='listContainer'>
-              <h1>{ele.title}</h1>
+              <h1 id="ListTitle">{ele.title.toUpperCase()}</h1>
                 <div  {...provided.droppableProps} ref={provided.innerRef}>
                   {ele.notes.map((card, index) => (
                     <Card
@@ -39,7 +39,7 @@ const textAdd=(e)=>{
                     />
                   ))}
                   {provided.placeholder}
-                  <TaskCreate submitText={submitText} listId={listId} name="card"/>
+                  <TaskCreate   classname="input" submitText={submitText} listId={listId} name="card"/>
                 </div>
               </div>
             )}
